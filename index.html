@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anurag Verma - Portfolio</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* RESET */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Poppins',sans-serif;background:#0f0c29;color:#e2e8f0;overflow-x:hidden;}
+
+    /* BG animation */
+    body::before{
+      content:"";position:fixed;top:0;left:0;width:100%;height:100%;
+      background:linear-gradient(45deg,#ff00cc,#333399,#00f2fe);
+      background-size:400% 400%;z-index:-1;
+      animation:gradientMove 15s ease infinite;
+    }
+    @keyframes gradientMove{
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+
+    /* Header */
+    header{padding:20px;text-align:center;background:rgba(0,0,0,0.4);backdrop-filter:blur(10px);
+      box-shadow:0 4px 20px rgba(0,0,0,0.6);position:sticky;top:0;z-index:10;}
+    nav{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
+    nav a{color:#fff;text-decoration:none;font-weight:bold;padding:10px 20px;border-radius:30px;
+      background:linear-gradient(90deg,#06b6d4,#3b82f6);transition:0.3s;}
+    nav a:hover{background:linear-gradient(90deg,#3b82f6,#06b6d4);box-shadow:0 0 20px #06b6d4;}
+
+    /* Hero (Photo + Bio) */
+    .hero{display:flex;align-items:center;justify-content:center;gap:50px;
+      padding:80px 20px;flex-wrap:wrap;}
+    .hero-left img{width:260px;border-radius:20px;border:3px solid #0ff;box-shadow:0 0 30px #0ff;transition:0.4s;}
+    .hero-left img:hover{transform:scale(1.08) rotate(3deg);box-shadow:0 0 60px #0ff;}
+    .hero-right{max-width:600px;background:rgba(255,255,255,0.05);padding:30px;border-radius:20px;
+      backdrop-filter:blur(15px);box-shadow:0 8px 30px rgba(0,0,0,0.5);}
+    .hero-right h1{font-size:42px;color:#0ff;margin-bottom:15px;}
+    .hero-right p{font-size:18px;color:#cbd5e1;line-height:1.6;}
+    .highlight{color:#facc15;font-weight:bold;}
+
+    /* Sections */
+    section{padding:60px 20px;text-align:center;max-width:1200px;margin:auto;}
+    section h2{font-size:34px;margin-bottom:20px;color:#0ff;}
+    section p{font-size:18px;line-height:1.6;}
+
+    /* Grid (Projects + Skills) */
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;margin-top:30px;}
+    .card{background:rgba(255,255,255,0.05);padding:25px;border-radius:18px;backdrop-filter:blur(10px);
+      transition:0.4s;font-size:18px;box-shadow:0 8px 20px rgba(0,0,0,0.4);}
+    .card:hover{transform:translateY(-12px);background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;
+      box-shadow:0 10px 40px rgba(6,182,212,0.8);}
+
+    /* Contact */
+    /* .contact a{color:#0ff;text-decoration:none;font-weight:bold;}
+    .contact a:hover{text-decoration:underline;} */
+
+    /* Footer */
+    footer{margin-top:50px;display:flex;justify-content:center;align-items:center;padding:50px 20px;}
+    .footer-container{display:flex;flex-wrap:wrap;background:#6a0832;border-radius:12px;overflow:hidden;
+      max-width:1000px;width:100%;box-shadow:0 10px 25px rgba(0,0,0,0.4);}
+
+    .footer-img{flex:1 1 250px;min-height:220px;}
+    .footer-img img{width:100%;height:100%;object-fit:cover;}
+
+    .footer-content{flex:2 1 400px;padding:30px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;}
+
+    .bio{margin-bottom:20px;}
+    .bio h3{font-size:22px;margin-bottom:10px;color:#0ff;}
+    .bio p{line-height:1.6;font-size:15px;color:#ddd;}
+
+    .newsletter{display:flex;flex-wrap:wrap;margin-bottom:30px;}
+    .newsletter input{flex:1;padding:12px 18px;border:none;border-radius:30px 0 0 30px;outline:none;font-size:15px;}
+    .newsletter button{padding:12px 22px;border:none;border-radius:0 30px 30px 0;background:#efae46;
+      color:#333;font-weight:bold;cursor:pointer;transition:0.3s;}
+    .newsletter button:hover{background:#fff;}
+
+    .footer-links{display:flex;flex-wrap:wrap;gap:40px;margin-bottom:25px;}
+    .footer-links h3{margin-bottom:10px;font-size:16px;}
+    .footer-links ul{list-style:none;}
+    .footer-links li{margin:6px 0;}
+    .footer-links a{color:#ddd;text-decoration:none;font-size:14px;transition:0.3s;}
+    .footer-links a:hover{color:#fff;}
+
+    .footer-bottom{border-top:1px solid rgba(255,255,255,0.3);padding-top:15px;
+      display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:14px;}
+    .socials a{color:#fff;margin-left:12px;font-size:16px;transition:0.3s;}
+    .socials a:hover{color:#fabfbf;}
+
+    @media(max-width:768px){
+      .hero{flex-direction:column;}
+      .footer-container{flex-direction:column;}
+      .footer-content{padding:20px;}
+      .newsletter input{border-radius:30px;margin-bottom:10px;}
+      .newsletter button{border-radius:30px;width:100%;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <!-- <a href="#home">Home</a> -->
+      <!-- <a href="#about">About</a> -->
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact-form">Contact</a>
+      <!-- <a href="#help">Help</a> -->
+    </nav>
+  </header>
+
+  <!-- Hero -->
+<title>Hero Section with Socials</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f5f5f5;
+    }
+
+    .hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 10%;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    /* Left Side */
+    .hero-left {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-left img {
+      width: 220px;
+      height: 220px;
+      border-radius: 10%;
+      object-fit: cover;
+      border: 3px solid #ddd;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    .hero-left img:hover {
+      transform: scale(1.05);
+    }
+
+    .socials {
+      margin-top: 20px;
+    }
+    .socials a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 24px;
+      color: #ffffff;
+      transition: all 0.3s ease;
+    }
+    .socials a:hover {
+      transform: translateY(-5px) scale(1.1);
+    }
+    .socials a:nth-child(1):hover { color: #1DA1F2; }  /* Twitter */
+    .socials a:nth-child(2):hover { color: #1877F2; }  /* Facebook */
+    .socials a:nth-child(3):hover { color: #0A66C2; }  /* LinkedIn */
+    .socials a:nth-child(4):hover { color: #FF0000; }  /* YouTube */
+
+    /* Right Side */
+    .hero-right {
+      flex: 1;
+    }
+    .hero-right h1 {
+      font-size: 36px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+    .hero-right p {
+      font-size: 18px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .hero-right button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .hero-right button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(6,182,212,0.8);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-right h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <!-- Left -->
+    <div class="hero-left">
+      <img src="owner.png" alt="Anurag Verma">
+
+      
+      <!-- Social Media Icons -->
+      <div class="socials" >
+ <u>
+        <a href="tel:+918303425374"><i class="fas fa-phone"></i></a>
+        
+    
+    <!-- WhatsApp -->
+    <a href="https://wa.me/918303425374" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    
+    <!-- Gmail -->
+    <a href="mailto:anuragverma8303425@gmail.com"><i class="fas fa-envelope"></i></a>
+    
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/anurag_verma0083?igsh=MTVnZ2lsY2plNjhmZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/anuragverma8303425?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
+
+    </u>
+        <!-- <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a> -->
+      </div>
+    </div>
+
+    <!-- Right -->
+    <div class="hero-right">
+      <h1>Anurag Verma</h1>
+      <p>Hi, I am <span class="highlight">Anurag Verma</span> from Agra.<br>
+        A <span class="highlight">Class 12 Student</span> passionate about 
+        <span class="highlight">Hacking & Cybersecurity</span> 🔐<br>
+        Exploring <span class="highlight">Web Development</span>, <span class="highlight">Linux</span>, and 
+        <span class="highlight">Full Stack Projects</span> 🚀</p>
+
+
+
+      <!-- Contact Me Button -->
+<a href="tel:+918303425374">
+  <button>Contact Me</button>
+</a>
+
+      <!-- <button>Contact Me</button> -->
+    </div>
+  </section>
+
+  <!-- FontAwesome for Icons -->
+  <script src="https://kit.fontawesome.com/4d4a2c9c5c.js" crossorigin="anonymous"></script>
+
+    </div>
+
+
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid-3">
+
+<div class="card">🔐 Password Manager (C++ / File Encryption)</div>
+<div class="card">🌐 Personal Portfolio Website</div>
+<div class="card">📡 Linux Server Monitoring Tool</div>
+<div class="card">🛡️ Basic Firewall in Python</div>
+<div class="card">📱 Android Notes App (Flutter + SQLite)</div>
+<div class="card">🤖 Chatbot using Python & NLP</div>
+<div class="card">💾 Student Result Management System (C++ / MySQL)</div>
+<div class="card">🛒 E-Commerce Website (HTML, CSS, JS, PHP, MySQL)</div>
+<div class="card">📊 Data Visualization Dashboard (Python + Matplotlib)</div>
+
+      <!-- <div class="card">🔐 Password Manager (C++ / File Encryption)</div>
+      <div class="card">🌐 Personal Portfolio Website</div>
+      <div class="card">📡 Linux Server Monitoring Tool</div>
+      <div class="card">🛡️ Basic Firewall in Python</div> -->
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="grid-3">
+<div class="card">HTML, CSS, JavaScript</div>
+<div class="card">PHP & MySQL</div>
+<div class="card">C++ & Data Structures</div>
+<div class="card">Linux & Servers</div>
+<div class="card">Cybersecurity Basics</div>
+<div class="card">Frontend + Backend Dev</div>
+<div class="card">Python Programming</div>
+
+<div class="card">Flutter & Dart (App Dev)</div>
+<div class="card">Git & GitHub (Version Control)</div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+
+
+  <title>Contact Form</title>
+  <style>
+   
+    .contact-box {
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+      width: 90%;
+      max-width: 420px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
+       margin-left: 20px;
+    
+
+    }
+    .contact-box h2 {
+      margin-bottom: 20px;
+      color: #0ff;
+      font-size: 28px;
+    }
+    .contact-box input,
+    .contact-box textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+    }
+    .contact-box input:focus,
+    .contact-box textarea:focus {
+      box-shadow: 0 0 10px #0ff;
+    }
+    .contact-box button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #06b6d4, #3b82f6);
+      color: #fff;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .contact-box button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #06b6d4;
+    }
+    .success {
+      margin-top: 15px;
+      color: #0f0;
+      display: none;
+      font-weight: bold;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="contact-box">
+    <h2>Contact Me</h2>
+    <form name="google-sheet" id="contact-form">
+      <input type="text" name="Name" placeholder="Enter your Name" required>
+      <input type="email" name="Email" placeholder="Enter your Gmail" required>
+      <textarea name="Comment" rows="5" placeholder="Enter your Comment" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="success" id="success-message">✅ Your response has been submitted!</div>
+  </div>
+
+  <script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwVuX9zCn0yHKpC7VuVOoSEqwYeHJIA6R6gwTvVypOTsJ-NymJ9jbPiujSO9fAXYUh6sQ/exec';
+    const form = document.forms['google-sheet'];
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          successMessage.style.display = "block";
+          form.reset();
+          setTimeout(() => { successMessage.style.display = "none"; }, 4000);
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
+  </script>
+
+<!-- isha button -->
+
+
+  <title>ISHA Access</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+      margin-bottom: 30px;
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 20px 60px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.5), 0 0 20px #ff6ec4, 0 0 30px #7873f5;
+    }
+
+    /* Password modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-content {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 20px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 20px #00fff7, 0 0 40px #ff00ff;
+    }
+
+    .modal-content h2 {
+      color: #00fff7;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px #00fff7, 0 0 10px #ff00ff;
+    }
+
+    .modal-content input[type="password"] {
+      width: 100%;
+      padding: 15px;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .modal-content button {
+      padding: 12px 30px;
+      border-radius: 50px;
+      border: none;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .modal-content button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px #ff6ec4, 0 0 25px #7873f5;
+    }
+
+    @media (max-width: 600px) {
+      .btn {
+        padding: 15px 40px;
+        font-size: 1.4rem;
+      }
+
+      .modal-content {
+        padding: 20px;
+      }
+
+      .modal-content input[type="password"] {
+        padding: 12px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome! Click ISHA to Access Study Material</h1>
+  <button class="btn" id="ishaBtn">ISHA</button>
+
+  <!-- Password Modal -->
+  <div class="modal" id="passwordModal">
+    <div class="modal-content">
+      <h2>Enter Password</h2>
+      <input type="password" id="passwordInput" placeholder="Enter Password">
+      <button id="submitPassword">Submit</button>
+    </div>
+  </div>
+
+  <script>
+    const ishaBtn = document.getElementById('ishaBtn');
+    const modal = document.getElementById('passwordModal');
+    const submitBtn = document.getElementById('submitPassword');
+    const passwordInput = document.getElementById('passwordInput');
+
+    const correctPassword = "Anurag@123#45";
+
+    // Show modal on button click
+    ishaBtn.addEventListener('click', () => {
+      modal.style.display = 'flex';
+      passwordInput.value = '';
+      passwordInput.focus();
+    });
+
+    // Check password
+    submitBtn.addEventListener('click', () => {
+      const entered = passwordInput.value;
+      if (entered === correctPassword) {
+        window.location.href = "pdf1.html";
+      } else {
+        alert("Incorrect Password! Try again.");
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    });
+
+    // Enter key also works
+    passwordInput.addEventListener('keyup', (e) => {
+      if(e.key === 'Enter'){
+        submitBtn.click();
+      }
+    });
+
+    // Click outside modal to close
+    window.addEventListener('click', (e) => {
+      if(e.target === modal){
+        modal.style.display = 'none';
+      }
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-img">
+        <img src="https://cdn.pixabay.com/photo/2020/11/29/15/59/computer-5788194_1280.jpg" alt="Footer Image">
+      </div>
+      <div class="footer-content">
+
+        <!-- Bio in footer -->
+        <div class="bio">
+          <h3>Anurag Verma</h3>
+          <p>Hi, I am Anurag Verma from Agra.<br>
+      A  Class 12 Student passionate about Hacking & Cybersecurity 🔐<br>
+          Exploring Web Development, Linux, and Full Stack Projects 🚀</p>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="newsletter">
+          <input type="email" placeholder="Your e-mail">
+          <button>Subscribe Now!</button>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-links">
+          <div>
+            <h3>Partnership</h3>
+            <ul>
+              <li><a href="#">Websites</a></li>
+              <li><a href="#">Social Media</a></li>
+              <li><a href="#">Branding</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>About</h3>
+            <ul>
+              <li><a href="#">Our Projects</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Support Request</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Bottom -->
+        <div class="footer-bottom">
+          <p>All rights reserved © 2025</p>
+          <div class="socials">
+
+
+            <a href="tel:+918303425374"><i class="fas fa-phone"></i></a>
+    
+    <!-- WhatsApp -->
+    <a href="https://wa.me/918303425374" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    
+    <!-- Gmail -->
+    <a href="mailto:anuragverma8303425@gmail.com"><i class="fas fa-envelope"></i></a>
+    
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/anurag_verma0083?igsh=MTVnZ2lsY2plNjhmZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+    
+    <!-- Facebook -->
+    <a href="https://www.facebook.com/anuragverma8303425?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
+          
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Material</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    header {
+      text-align: center;
+      padding: 25px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      perspective: 1500px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 25px;
+      padding: 40px;
+      text-align: center;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7), 0 0 20px #00fff7, 0 0 40px #ff00ff;
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      transform-style: preserve-3d;
+    }
+
+    .card:hover {
+      transform: rotateY(10deg) rotateX(5deg) translateY(-10px);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.8), 0 0 30px #00fff7, 0 0 60px #ff00ff;
+    }
+
+    .card h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #00fff7;
+      text-shadow: 0 0 5px #00fff7, 0 0 10px #ff00ff;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #ccc;
+      text-shadow: 0 0 3px #fff;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      margin: 10px;
+      border-radius: 50px;
+      background: linear-gradient(45deg, #ff00ff, #00fff7);
+      color: #fff;
+      font-size: 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 10px #ff00ff, 0 0 20px #00fff7;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255,255,255,0.1);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+    }
+
+    .btn:hover::before {
+      top: 0;
+      left: 0;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px #ff00ff, 0 0 40px #00fff7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.1);
+      color: #fff;
+      text-shadow: 0 0 5px #00fff7;
+      margin-bottom: 70px;
+    }
+
+    footer span {
+      color: #ff00ff;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      .card {
+        padding: 25px;
+      }
+      .card h2 {
+        font-size: 1.6rem;
+      }
+      .btn {
+        padding: 12px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>📚 Study Material of ISHA</header>
+
+  <div class="container">
+    <div class="card">
+      <h2>All Study Material</h2>
+      <p>Click below to open the complete folder of study PDFs.</p>
+      <!-- Google Drive link button -->
+      <a href="https://drive.google.com/drive/folders/1Z7PApBM2sKGsB_o7rZndpdFwGaiZ_zNj?usp=drive_link" 
+         target="_blank" class="btn">Open Drive Folder</a>
+      <a href="index.html" class="btn">Go Back</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Anurag Verma</span> © 2025 | All rights reserved
+
+  </footer>
+
+</body>
+</html>
